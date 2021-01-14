@@ -1,3 +1,5 @@
+import ItemAdapter from '../adapters/ItemAdapter';
+
 const initialState = {
   pending: [],
   purchased: [],
@@ -13,6 +15,33 @@ export default (state=initialState,action) => {
         ...state,
         ...action.data
       }
+
+    case 'ADD_ITEM':
+      debugger;
+      if(action.item.trim() !== ""){
+        const items = ItemAdapter.addNewItem(state.pending,{ title: action.item })
+        return {
+          ...state,
+          pending: items
+        }
+      }
+      return state
+
+    case 'ADD_CATEGORY':
+      if(action.item.trim() !== ""){
+        const categoryObj = {
+          key: action.item.toLowerCase(),
+          value: action.item,
+          text: action.item
+        }
+        const categories = [...state.categories,categoryObj]
+
+        return {
+          ...state,
+          categories
+        }
+      }
+      return state
 
     default:
       return {
