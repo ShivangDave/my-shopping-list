@@ -1,9 +1,17 @@
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment, Header, Search } from 'semantic-ui-react';
+
+import TableParent from './table/TableParent';
 
 const BuyList = () => {
   return (
     <Grid.Column>
-      This is Buylist.
+      <Segment textAlign={'center'}>
+        <Header> Need to buy </Header>
+        <Search showNoResults={false} placeholder={'Search..'} />
+      </Segment>
+
+      <TableParent />
+
     </Grid.Column>
   )
 }

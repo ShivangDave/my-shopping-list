@@ -1,9 +1,16 @@
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment, Header } from 'semantic-ui-react';
+
+import TableParent from './table/TableParent';
 
 const DoneList = () => {
   return (
     <Grid.Column>
-      This is Done list.
+      <Segment textAlign={'center'}>
+        <Header> Done list </Header>
+      </Segment>
+
+      <TableParent />
+
     </Grid.Column>
   )
 }
