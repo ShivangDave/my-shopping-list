@@ -3,10 +3,11 @@ import ItemAdapter from '../adapters/ItemAdapter';
 const initialState = {
   pending: [],
   purchased: [],
-  categories: []
+  categories: [],
+  searchTerm: ''
 }
 
-export default (state=initialState,action) => {
+const itemReducer = (state=initialState,action) => {
 
   switch (action.type) {
 
@@ -71,6 +72,12 @@ export default (state=initialState,action) => {
         pending: pendingList
       }
 
+    case 'SEARCH_ITEM':
+      return {
+        ...state,
+        searchTerm: action.searchTerm
+      }
+
     default:
       return {
         ...state
@@ -78,3 +85,5 @@ export default (state=initialState,action) => {
   }
 
 }
+
+export default itemReducer;

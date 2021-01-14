@@ -4,8 +4,9 @@ import TableParent from './table/TableParent';
 import ItemAdapter from '../adapters/ItemAdapter';
 
 import { connect } from 'react-redux';
+import { search_item } from '../actions/itemActions';
 
-const BuyList = ({ items }) => {
+const BuyList = ({ items, search_item }) => {
 
   const totalPrice = ItemAdapter.totalPrice(items)
   const itemsByCategory = ItemAdapter.groupItems(items)
@@ -14,7 +15,7 @@ const BuyList = ({ items }) => {
     <Grid.Column>
       <Segment textAlign={'center'}>
         <Header> Need to buy </Header>
-        <Search showNoResults={false} placeholder={'Search..'} />
+        <Search showNoResults={false} placeholder={'Search..'} onSearchChange={search_item} />
       </Segment>
 
       {
@@ -30,9 +31,11 @@ const BuyList = ({ items }) => {
   )
 }
 
-const mapStateToProps = (state) => ({ items: state.pending })
+const mapStateToProps = (state) => ({
+  items: ItemAdapter.filterItems(state.pending,state.searchTerm)
+})
 
-export default connect(mapStateToProps)(BuyList);
+export default connect(mapStateToProps,{ search_item })(BuyList);
 
 //
 // Passing a boolean to TableParent

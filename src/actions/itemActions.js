@@ -21,3 +21,7 @@ export const relist_item = (item) => {
 export const update_item = (item) => {
   return { type: 'UPDATE_ITEM', item }
 }
+
+export const search_item = (e,{value}) => {
+  return { type: 'SEARCH_ITEM', searchTerm: value }
+}
