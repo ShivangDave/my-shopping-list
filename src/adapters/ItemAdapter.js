@@ -26,6 +26,15 @@ class ItemAdapter {
     },0)
   }
 
+  static groupItems = (items) => {
+    // Groups items by category
+    // credit goes to MDN and Stackoverflow
+    return items.reduce((categoryObj, currentItem) => {
+       categoryObj[currentItem.category] = [...categoryObj[currentItem.category] || [], currentItem];
+       return categoryObj;
+    }, {});
+  }
+
 }
 
 class Item {
