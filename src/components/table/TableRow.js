@@ -2,17 +2,20 @@ import { Table, Form, Checkbox, Input, Select } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 
-import { buy_item } from '../../actions/itemActions';
+import { buy_item, relist_item } from '../../actions/itemActions';
 
-const TableRow = ({ willBuy, item, categories, buy_item }) => {
+const TableRow = ({ willBuy, item, categories, buy_item, relist_item }) => {
 
   const { title, price, category, quantity } = item
+  // if true: buy item
+  // if false: relist item
+  const callBack = willBuy ? buy_item : relist_item
 
   return (
     <Table.Row className={ willBuy ? '' : 'crossed' }>
 
       <Table.Cell>
-        <Checkbox checked={!willBuy} onClick={() => buy_item(item)} />
+        <Checkbox checked={!willBuy} onClick={() => callBack(item)} />
       </Table.Cell>
 
       <Table.Cell>
@@ -40,4 +43,4 @@ const TableRow = ({ willBuy, item, categories, buy_item }) => {
 
 const mapStateToProps = (state) => ({ categories: state.categories })
 
-export default connect(mapStateToProps,{ buy_item })(TableRow);
+export default connect(mapStateToProps,{ buy_item, relist_item })(TableRow);

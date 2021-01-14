@@ -13,3 +13,7 @@ export const add_category = (item) => {
 export const buy_item = (item) => {
   return { type: 'BUY_ITEM', item }
 }
+
+export const relist_item = (item) => {
+  return { type: 'RELIST_ITEM', item }
+}

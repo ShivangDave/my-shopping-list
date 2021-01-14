@@ -3,15 +3,15 @@ import { Segment, Table } from 'semantic-ui-react';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 
-const TableParent = (props) => {
+const TableParent = ({ willBuy, items }) => {
   return (
     <Segment textAlign={'center'}>
       <Table columns={5} celled>
         <TableHeader />
         <Table.Body>
           {
-            props.items.map(item => (
-              <TableRow willBuy={props.willBuy} item={item} />
+            items.sort((a,b) => (a.title > b.title) ? 1 : -1).map(item => (
+              <TableRow willBuy={willBuy} item={item} />
             ))
           }
         </Table.Body>

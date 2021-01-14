@@ -53,6 +53,16 @@ export default (state=initialState,action) => {
       }
       return state
 
+    case 'RELIST_ITEM':
+      const updatedPendingItems = ItemAdapter.addNewItem(state.pending,action.item)
+      const updatedPurchasedItems = ItemAdapter.removeItem(state.purchased,action.item)
+
+      return {
+        ...state,
+        pending: updatedPendingItems,
+        purchased: updatedPurchasedItems
+      }
+
     default:
       return {
         ...state
