@@ -35,6 +35,10 @@ class ItemAdapter {
     }, {});
   }
 
+  static filterItems = (list,term) => {
+    return list.filter(item => item.title.toLowerCase().includes(term))
+  }
+
 }
 
 class Item {
