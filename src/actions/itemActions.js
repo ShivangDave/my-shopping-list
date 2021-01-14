@@ -9,3 +9,7 @@ export const add_item = (item) => {
 export const add_category = (item) => {
   return { type: 'ADD_CATEGORY', item }
 }
+
+export const buy_item = (item) => {
+  return { type: 'BUY_ITEM', item }
+}

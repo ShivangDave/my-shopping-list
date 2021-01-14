@@ -6,6 +6,12 @@ class ItemAdapter {
     return items
   }
 
+  static removeItem = (list, item) => {
+    const index = list.findIndex(i => i.title === item.title && i.price === item.price)
+    const items = list.filter((_,i_index) => index !== i_index)
+    return items
+  }
+
 }
 
 class Item {

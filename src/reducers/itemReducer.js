@@ -27,6 +27,16 @@ export default (state=initialState,action) => {
       }
       return state
 
+    case 'BUY_ITEM':
+      let pending = ItemAdapter.removeItem(state.pending,action.item)
+      let purchased = ItemAdapter.addNewItem(state.purchased,action.item)
+
+      return {
+        ...state,
+        pending,
+        purchased
+      }
+
     case 'ADD_CATEGORY':
       if(action.item.trim() !== ""){
         const categoryObj = {
