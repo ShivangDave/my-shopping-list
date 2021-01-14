@@ -1,11 +1,12 @@
-import { Segment, Table } from 'semantic-ui-react';
+import { Segment, Table, Header } from 'semantic-ui-react';
 
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 
-const TableParent = ({ willBuy, items }) => {
+const TableParent = ({ willBuy, items, category }) => {
   return (
     <Segment textAlign={'center'}>
+      <Header> {category} </Header>
       <Table columns={5} celled>
         <TableHeader />
         <Table.Body>

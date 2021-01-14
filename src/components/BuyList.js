@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 const BuyList = ({ items }) => {
 
   const totalPrice = ItemAdapter.totalPrice(items)
-  const groupedByCategory = ItemAdapter.groupItems(items)
+  const itemsByCategory = ItemAdapter.groupItems(items)
 
   return (
     <Grid.Column>
@@ -18,8 +18,8 @@ const BuyList = ({ items }) => {
       </Segment>
 
       {
-        Object.keys(groupedByCategory).map(itemsInACategory => {
-          return <TableParent willBuy items={groupedByCategory[itemsInACategory]} />
+        Object.keys(itemsByCategory).map(category => {
+          return <TableParent willBuy category={category} items={itemsByCategory[category]} />
         })
       }
 
