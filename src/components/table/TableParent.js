@@ -3,13 +3,13 @@ import { Segment, Table } from 'semantic-ui-react';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 
-const TableParent = () => {
+const TableParent = ({ willBuy }) => {
   return (
     <Segment textAlign={'center'}>
       <Table columns={5} celled>
         <TableHeader />
         <Table.Body>
-          <TableRow />
+          <TableRow willBuy={willBuy} />
         </Table.Body>
       </Table>
     </Segment>

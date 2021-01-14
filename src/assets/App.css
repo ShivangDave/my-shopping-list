@@ -6,3 +6,7 @@
 .grid-parent {
   margin: 10px !important;
 }
+
+.crossed {
+  text-decoration: line-through;
+}

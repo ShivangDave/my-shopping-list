@@ -1,11 +1,12 @@
 import { Table, Form, Checkbox, Input, Select } from 'semantic-ui-react';
 
-const TableRow = () => {
+const TableRow = ({ willBuy }) => {
+
   return (
-    <Table.Row>
+    <Table.Row className={ willBuy ? '' : 'crossed' }>
 
       <Table.Cell>
-        <Checkbox checked={false} />
+        <Checkbox checked={!willBuy} />
       </Table.Cell>
 
       <Table.Cell>
@@ -14,17 +15,17 @@ const TableRow = () => {
 
       <Table.Cell>
         <Form.Field fluid control={Input} type={'number'} placeholder='Quantity'
-          name={'quantity'} value={''} />
+          disabled={!willBuy} name={'quantity'} value={''} />
       </Table.Cell>
 
       <Table.Cell>
         <Form.Field fluid control={Input} type={'number'} placeholder='Price'
-          name={'price'} value={''} />
+          disabled={!willBuy} name={'price'} value={''} />
       </Table.Cell>
 
       <Table.Cell>
         <Form.Field fluid control={Select} options={[]} name={'category'}
-          value={''} />
+          disabled={!willBuy} value={''} />
       </Table.Cell>
 
     </Table.Row>

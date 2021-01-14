@@ -9,10 +9,16 @@ const DoneList = () => {
         <Header> Done list </Header>
       </Segment>
 
-      <TableParent />
+      <TableParent willBuy={false} />
 
     </Grid.Column>
   )
 }
-
 export default DoneList;
+
+//
+// Passing a boolean to TableParent
+// if true, on click item will move to DoneList
+// if false, on click item will move to BuyList
+// if false, text will show up with line-through decoration
+//
