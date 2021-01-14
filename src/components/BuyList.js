@@ -1,8 +1,9 @@
 import { Grid, Segment, Header, Search } from 'semantic-ui-react';
-
 import TableParent from './table/TableParent';
 
-const BuyList = () => {
+import { connect } from 'react-redux';
+
+const BuyList = ({ pending }) => {
   return (
     <Grid.Column>
       <Segment textAlign={'center'}>
@@ -10,10 +11,19 @@ const BuyList = () => {
         <Search showNoResults={false} placeholder={'Search..'} />
       </Segment>
 
-      <TableParent />
+      <TableParent willBuy items={pending} />
 
     </Grid.Column>
   )
 }
 
-export default BuyList;
+const mapStateToProps = (state) => ({ pending: state.pending })
+
+export default connect(mapStateToProps)(BuyList);
+
+//
+// Passing a boolean to TableParent
+// if true, on click item will move to DoneList
+// if false, on click item will move to BuyList
+// if false, text will show up with line-through decoration
+//
