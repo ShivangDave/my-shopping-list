@@ -26,7 +26,7 @@ const BuyList = ({ items, search_item }) => {
     <Grid.Column>
       <Segment textAlign={'center'}>
         <Header> Need to buy </Header>
-        <Search showNoResults={false} placeholder={'Search..'} onSearchChange={search_item} />
+        <Search showNoResults={false} placeholder={'Is it on the list already?'} onSearchChange={search_item} />
       </Segment>
       {
         items.length > 0 ? renderTables() : renderPlaceholder()
