@@ -12,6 +12,13 @@ class ItemAdapter {
     return items
   }
 
+  static updateItem = (list,item) => {
+    const index = list.findIndex(i => i.title === item.title)
+    const items = [...list]
+    items[index] = item
+    return items
+  }
+
 }
 
 class Item {
