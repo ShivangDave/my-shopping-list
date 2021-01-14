@@ -1,4 +1,4 @@
-import { Grid, Segment, Form, Header, Input, Button } from 'semantic-ui-react';
+import { Segment, Form, Header, Input, Button } from 'semantic-ui-react';
 
 import { useState } from 'react';
 import { connect } from 'react-redux';
@@ -23,7 +23,6 @@ const CreateForm = ({ item, add_item, add_category }) => {
   const callBack = item ? add_item : add_category
 
   return (
-    <Grid.Column>
       <Segment>
         <Header textAlign={'center'}> {header} </Header>
         <Form>
@@ -45,7 +44,6 @@ const CreateForm = ({ item, add_item, add_category }) => {
           />
         </Form>
       </Segment>
-    </Grid.Column>
   )
 }
 

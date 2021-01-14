@@ -1,5 +1,6 @@
 import { Grid, Segment, Header, Search } from 'semantic-ui-react';
 import TableParent from './table/TableParent';
+import HeaderBar from './HeaderBar';
 
 import ItemAdapter from '../adapters/ItemAdapter';
 
@@ -11,19 +12,25 @@ const BuyList = ({ items, search_item }) => {
   const totalPrice = ItemAdapter.totalPrice(items)
   const itemsByCategory = ItemAdapter.groupItems(items)
 
+  const renderTables = () => {
+    return Object.keys(itemsByCategory).map(category => {
+      return <TableParent willBuy category={category} items={itemsByCategory[category]} />
+    })
+  }
+
+  const renderPlaceholder = () => (
+    <HeaderBar content={'No items..'} icon={'check circle'} />
+  )
+
   return (
     <Grid.Column>
       <Segment textAlign={'center'}>
         <Header> Need to buy </Header>
         <Search showNoResults={false} placeholder={'Search..'} onSearchChange={search_item} />
       </Segment>
-
       {
-        Object.keys(itemsByCategory).map(category => {
-          return <TableParent willBuy category={category} items={itemsByCategory[category]} />
-        })
+        items.length > 0 ? renderTables() : renderPlaceholder()
       }
-
       <Segment textAlign={'center'}>
         <Header> Total Price: ${totalPrice} </Header>
       </Segment>
