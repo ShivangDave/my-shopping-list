@@ -1,11 +1,11 @@
 import  { Header, Icon } from 'semantic-ui-react';
 
-const HeaderBar = () => {
+const HeaderBar = ({ content, icon }) => {
   return (
     <div className={'header-parent'}>
       <Header as='h4' icon textAlign='center'>
-        <Icon name={'shop'} />
-        <Header.Content>{`Let's go Shopping!`}</Header.Content>
+        <Icon name={icon} />
+        <Header.Content>{content}</Header.Content>
       </Header>
     </div>
   )
