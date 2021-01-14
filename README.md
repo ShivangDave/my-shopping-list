@@ -1,5 +1,7 @@
 # My Shopping List
 
+#### Build Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/d8e88c13-35c1-40ed-8573-221a006c88e9/deploy-status)](https://app.netlify.com/sites/eager-yalow-a55712/deploys)
+
 # Information
 - [x] Front End: React
 - [x] Styling: Semantic UI React Components

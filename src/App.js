@@ -17,7 +17,7 @@ import './assets/App.css';
 const App = (props) => {
 
   useEffect(() => {
-    props.set_dummy_data({ pending, purchased, categories })
+    props.set_dummy_data({ pending: [], purchased: [], categories: [] })
   })
 
   return (
