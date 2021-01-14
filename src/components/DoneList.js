@@ -2,20 +2,24 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 
 import TableParent from './table/TableParent';
 
-const DoneList = () => {
+import { connect } from 'react-redux';
+
+const DoneList = ({ purchased }) => {
   return (
     <Grid.Column>
       <Segment textAlign={'center'}>
         <Header> Done list </Header>
       </Segment>
 
-      <TableParent willBuy={false} />
+      <TableParent willBuy={false} items={purchased} />
 
     </Grid.Column>
   )
 }
-export default DoneList;
 
+const mapStateToProps = (state) => ({ purchased: state.purchased })
+
+export default connect(mapStateToProps)(DoneList);
 //
 // Passing a boolean to TableParent
 // if true, on click item will move to DoneList

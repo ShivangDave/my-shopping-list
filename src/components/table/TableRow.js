@@ -1,6 +1,10 @@
 import { Table, Form, Checkbox, Input, Select } from 'semantic-ui-react';
 
-const TableRow = ({ willBuy }) => {
+import { connect } from 'react-redux';
+
+const TableRow = ({ willBuy, item, categories }) => {
+
+  const { title, price, category, quantity } = item
 
   return (
     <Table.Row className={ willBuy ? '' : 'crossed' }>
@@ -10,26 +14,28 @@ const TableRow = ({ willBuy }) => {
       </Table.Cell>
 
       <Table.Cell>
-        Sample Item
+        { title }
       </Table.Cell>
 
       <Table.Cell>
         <Form.Field fluid control={Input} type={'number'} placeholder='Quantity'
-          disabled={!willBuy} name={'quantity'} value={''} />
+          disabled={!willBuy} name={'quantity'} value={quantity} />
       </Table.Cell>
 
       <Table.Cell>
         <Form.Field fluid control={Input} type={'number'} placeholder='Price'
-          disabled={!willBuy} name={'price'} value={''} />
+          disabled={!willBuy} name={'price'} value={price} />
       </Table.Cell>
 
       <Table.Cell>
-        <Form.Field fluid control={Select} options={[]} name={'category'}
-          disabled={!willBuy} value={''} />
+        <Form.Field fluid control={Select} options={categories} name={'category'}
+          disabled={!willBuy} value={category} />
       </Table.Cell>
 
     </Table.Row>
   )
 }
 
-export default TableRow;
+const mapStateToProps = (state) => ({ categories: state.categories })
+
+export default connect(mapStateToProps)(TableRow);
