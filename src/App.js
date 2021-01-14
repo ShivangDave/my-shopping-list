@@ -6,7 +6,7 @@ import DoneList from './components/DoneList';
 import CreateFormContainer from './containers/CreateFormContainer';
 
 import { Grid } from 'semantic-ui-react';
-import { pending, purchased, categories } from './data/sample-data';
+// import { pending, purchased, categories } from './data/sample-data';
 
 import { connect } from 'react-redux';
 import { set_dummy_data } from './actions/itemActions';
