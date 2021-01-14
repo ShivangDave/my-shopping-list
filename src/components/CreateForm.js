@@ -1,8 +1,10 @@
 import { Grid, Segment, Form, Header, Input, Button } from 'semantic-ui-react';
 
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { add_item, add_category } from '../actions/itemActions';
 
-const CreateForm = ({ item }) => {
+const CreateForm = ({ item, add_item, add_category }) => {
 
   // Change header for item or category
   const header = item ? "Add an Item" : "Add a category"
@@ -12,9 +14,13 @@ const CreateForm = ({ item }) => {
   const [title,setTitle] = useState('')
 
   // Form input onChange handler
-  const onChange = (e,{value}) => {
+  const onChange = (e,{_,value}) => {
     setTitle(value)
   }
+
+  // true : create an item
+  // false : create a category
+  const callBack = item ? add_item : add_category
 
   return (
     <Grid.Column>
@@ -30,7 +36,7 @@ const CreateForm = ({ item }) => {
           />
 
           <Form.Field onClick={() => {
-              alert(title)
+              callBack(title)
               setTitle('') // Clear the form on submit
             }}
             control={Button}
@@ -43,4 +49,4 @@ const CreateForm = ({ item }) => {
   )
 }
 
-export default CreateForm;
+export default connect(null,{ add_item, add_category })(CreateForm);
