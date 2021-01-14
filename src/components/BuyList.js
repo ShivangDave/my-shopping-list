@@ -1,9 +1,14 @@
 import { Grid, Segment, Header, Search } from 'semantic-ui-react';
 import TableParent from './table/TableParent';
 
+import ItemAdapter from '../adapters/ItemAdapter';
+
 import { connect } from 'react-redux';
 
-const BuyList = ({ pending }) => {
+const BuyList = ({ items }) => {
+
+  const totalPrice = ItemAdapter.totalPrice(items)
+
   return (
     <Grid.Column>
       <Segment textAlign={'center'}>
@@ -11,13 +16,16 @@ const BuyList = ({ pending }) => {
         <Search showNoResults={false} placeholder={'Search..'} />
       </Segment>
 
-      <TableParent willBuy items={pending} />
+      <TableParent willBuy items={items} />
 
+      <Segment textAlign={'center'}>
+        <Header> Total Price: ${totalPrice} </Header>
+      </Segment>
     </Grid.Column>
   )
 }
 
-const mapStateToProps = (state) => ({ pending: state.pending })
+const mapStateToProps = (state) => ({ items: state.pending })
 
 export default connect(mapStateToProps)(BuyList);
 

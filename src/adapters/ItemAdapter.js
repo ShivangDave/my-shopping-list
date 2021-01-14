@@ -19,6 +19,13 @@ class ItemAdapter {
     return items
   }
 
+  static totalPrice = (list) => {
+    return list.reduce((acc,val) => {
+      const price = val.price ? parseInt(val.price) : 0
+      return acc + (price * val.quantity)
+    },0)
+  }
+
 }
 
 class Item {
