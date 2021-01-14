@@ -17,3 +17,7 @@ export const buy_item = (item) => {
 export const relist_item = (item) => {
   return { type: 'RELIST_ITEM', item }
 }
+
+export const update_item = (item) => {
+  return { type: 'UPDATE_ITEM', item }
+}

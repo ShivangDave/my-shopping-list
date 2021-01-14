@@ -63,6 +63,14 @@ export default (state=initialState,action) => {
         purchased: updatedPurchasedItems
       }
 
+    case 'UPDATE_ITEM':
+      const pendingList = ItemAdapter.updateItem(state.pending,action.item)
+
+      return {
+        ...state,
+        pending: pendingList
+      }
+
     default:
       return {
         ...state

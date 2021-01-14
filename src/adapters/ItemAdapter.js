@@ -12,6 +12,20 @@ class ItemAdapter {
     return items
   }
 
+  static updateItem = (list,item) => {
+    const index = list.findIndex(i => i.title === item.title)
+    const items = [...list]
+    items[index] = item
+    return items
+  }
+
+  static totalPrice = (list) => {
+    return list.reduce((acc,val) => {
+      const price = val.price ? parseInt(val.price) : 0
+      return acc + (price * val.quantity)
+    },0)
+  }
+
 }
 
 class Item {
