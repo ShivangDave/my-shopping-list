@@ -22,7 +22,7 @@ const App = (props) => {
 
   return (
     <>
-      <HeaderBar />
+      <HeaderBar content={`Let's go Shopping!`} icon={'shop'} />
       <Grid className={'grid-parent'} stackable columns={3} >
         <BuyList />
         <CreateFormContainer />
